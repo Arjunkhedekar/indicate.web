@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 function SendUserIdButton({ user }) {
   const [wifiName, setWifiName] = useState('');
   const [wifiPassword, setWifiPassword] = useState('');
-  const [esp32Ip, setEsp32Ip] = useState('192.168.4.1'); // Default AP IP
+  const [tankheight, setTankHeight] = useState(0);
+  const [productid, setProductid] = useState(0);
 
   console.log(user.uid);
   const sendData = async () => {
@@ -35,7 +36,7 @@ function SendUserIdButton({ user }) {
 
   return (
     <div>
-      <h2>Send Data to Your ESP32</h2>
+      <h2>Send Data</h2>
       <div>
         <label>
           Wi-Fi Name:
@@ -58,8 +59,33 @@ function SendUserIdButton({ user }) {
           />
         </label>
       </div>
+      <div>
+        <label>
+          Tank Height:
+          <input
+            type="number"
+            value={tankheight}
+            onChange={(e) => setTankHeight(e.target.value)}
+            placeholder="Enter tank height"
+          />
+        </label>
+      </div>
+      <div>
+        <label>
+          Product id:
+          <input
+            type="number"
+            value={productid}
+            onChange={(e) => setProductid(e.target.value)}
+            placeholder="Enter product id"
+          />
+        </label>
+      </div>
       <button onClick={sendData}>Send Data</button>
+      
     </div>
+    
+    
   );
 }
 
